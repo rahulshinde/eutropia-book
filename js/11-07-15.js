@@ -19,6 +19,10 @@ scene.add( light1 );
 var coverTexture = new THREE.ImageUtils.loadTexture( 'img/cover.jpg' );
 
 var coverMaterial = new THREE.MeshPhongMaterial( { map: coverTexture, side:THREE.DoubleSide } );
+
+var spineTexture = new THREE.ImageUtils.loadTexture( 'img/spine.jpg' );
+
+var spineMaterial = new THREE.MeshPhongMaterial( { map: spineTexture, side:THREE.DoubleSide } );
  
 // BINDER //
 
@@ -36,8 +40,7 @@ binderFace2.rotation.y = -.07;
 binderGroup.add( binderFace2 );
 
 var geometry3 = new THREE.BoxGeometry( .5, 26, 4 );
-var material3 = new THREE.MeshPhongMaterial( { color: 0xffffff } );
-var spine = new THREE.Mesh( geometry3, material3 );
+var spine = new THREE.Mesh( geometry3, spineMaterial );
 spine.position.x = -9.75;
 spine.position.z = -1.4;
 binderGroup.add( spine );
@@ -47,7 +50,7 @@ binderGroup.add( spine );
 
 scene.add (binderGroup);
 
-camera.position.z = 50;
+camera.position.z = 30;
 
 function onWindowResize() {
 
