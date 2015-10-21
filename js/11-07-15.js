@@ -62,8 +62,8 @@ function onWindowResize() {
 function render() {
 	requestAnimationFrame( render );
 
-	binderGroup.rotation.x += .01;
-	binderGroup.rotation.y += .01;
+	binderGroup.rotation.x += .005;
+	binderGroup.rotation.y += .005;
 
 	renderer.render( scene, camera );
 }
