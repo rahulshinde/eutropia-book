@@ -26,22 +26,24 @@ var binderGroup = new THREE.Group();
 
 var geometry1 = new THREE.BoxGeometry( 20, 26, 0.3 );
 var binderFace1 = new THREE.Mesh( geometry1, coverMaterial );
-binderFace1.rotation.y = .05;
+binderFace1.rotation.y = .07;
 binderGroup.add( binderFace1 );
 
 var material = new THREE.MeshPhongMaterial( { color: 0xffffff } );
 var binderFace2 = new THREE.Mesh( geometry1, material );
-binderFace2.position.z = -3.2;
-binderFace2.rotation.y = -.05;
+binderFace2.position.z = -2.6;
+binderFace2.rotation.y = -.07;
 binderGroup.add( binderFace2 );
 
 var geometry3 = new THREE.BoxGeometry( .5, 26, 4 );
 var material3 = new THREE.MeshPhongMaterial( { color: 0xffffff } );
 var spine = new THREE.Mesh( geometry3, material3 );
 spine.position.x = -9.75;
-spine.position.z = -1.6;
+spine.position.z = -1.4;
 binderGroup.add( spine );
 
+	// binderGroup.rotation.x += 1.5;
+	// binderGroup.rotation.y += .005;
 
 scene.add (binderGroup);
 
