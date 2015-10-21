@@ -9,21 +9,40 @@ document.body.appendChild( renderer.domElement );
 
 window.addEventListener( 'resize', onWindowResize, false );
 
+
+var light1 = new THREE.PointLight( 0xffffff, 1, 4500 );
+light1.position.set( 0, 0, 25 );
+scene.add( light1 );
+
+// LOAD TEXTURES //
+
+var coverTexture = new THREE.ImageUtils.loadTexture( 'img/cover.jpg' );
+
+var coverMaterial = new THREE.MeshPhongMaterial( { map: coverTexture, side:THREE.DoubleSide } );
+ 
+// BINDER //
+
 var binderGroup = new THREE.Group();
 
-var geometry1 = new THREE.BoxGeometry( 20, 30, 1 );
-var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-var binderFace1 = new THREE.Mesh( geometry1, material );
+var geometry1 = new THREE.BoxGeometry( 20, 26, 0.3 );
+var binderFace1 = new THREE.Mesh( geometry1, coverMaterial );
+binderFace1.rotation.y = .05;
 binderGroup.add( binderFace1 );
 
-var geometry1 = new THREE.BoxGeometry( 20, 30, 1 );
-var material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var material = new THREE.MeshPhongMaterial( { color: 0xffffff } );
 var binderFace2 = new THREE.Mesh( geometry1, material );
-binderFace2.position.z = -10;
+binderFace2.position.z = -3.2;
+binderFace2.rotation.y = -.05;
 binderGroup.add( binderFace2 );
 
+var geometry3 = new THREE.BoxGeometry( .5, 26, 4 );
+var material3 = new THREE.MeshPhongMaterial( { color: 0xffffff } );
+var spine = new THREE.Mesh( geometry3, material3 );
+spine.position.x = -9.75;
+spine.position.z = -1.6;
+binderGroup.add( spine );
 
-binderGroup.rotation.x += 1;
+
 scene.add (binderGroup);
 
 camera.position.z = 50;
@@ -43,9 +62,8 @@ function onWindowResize() {
 function render() {
 	requestAnimationFrame( render );
 
-	// cube.rotation.x += 0.01;
-	// cube.rotation.y += 0.01;
-	// cube.rotation.z += 0.01;
+	binderGroup.rotation.x += .01;
+	binderGroup.rotation.y += .01;
 
 	renderer.render( scene, camera );
 }
